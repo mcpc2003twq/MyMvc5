@@ -10,6 +10,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<form action="">
+    <input type="search" name="search" value="" />
+    <input type="submit" value="搜尋" />
+</form>
 <table class="table">
     <tr>
         <th>
@@ -63,6 +67,9 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
         </td>
     </tr>
+   
 }
 
 </table>
+
+@Html.Action("Create")

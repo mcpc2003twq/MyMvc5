@@ -33,7 +33,7 @@ namespace MVC5Course.Models
         public string MiddleName { get; set; }
         [Required]
         [DisplayName("姓")]
-        [StringLength(10, ErrorMessage = "{0}最大不得超過{1}個字元")]
+        [StringLength(10, ErrorMessage = "{0},最大不得超過{1}個字元")]
         public string LastName { get; set; }
 
         [Required]
@@ -42,10 +42,11 @@ namespace MVC5Course.Models
         public string Gender { get; set; }
 
         [DisplayName("生日")]
-        [DisplayFormat(DataFormatString = "{0:yyyy - MM - dd}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         [DisplayName("信用評等")]
+        [Range(0, 9, ErrorMessage = "{0},信用評等必須介於0-9")]
         public Nullable<double> CreditRating { get; set; }
         [DisplayName("功能")]
         public string XCode { get; set; }
