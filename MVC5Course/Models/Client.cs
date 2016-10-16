@@ -11,9 +11,7 @@ namespace MVC5Course.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,34 +19,14 @@ namespace MVC5Course.Models
         {
             this.Order = new HashSet<Order>();
         }
-
-
+    
         public int ClientId { get; set; }
-        [Required]
-        [DisplayName("名")]
         public string FirstName { get; set; }
-        [Required]
-        [DisplayName("中間名")]
-        [StringLength(10, ErrorMessage = "{0},欄位長度不可超過10")]
         public string MiddleName { get; set; }
-        [Required]
-        [DisplayName("姓")]
-        [StringLength(10, ErrorMessage = "{0},最大不得超過{1}個字元")]
         public string LastName { get; set; }
-
-        [Required]
-        [DisplayName("性別")]
-        [RegularExpression("[MF]", ErrorMessage = "{0},欄位只能輸入M 或 F")]
         public string Gender { get; set; }
-
-        [DisplayName("生日")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-
         public Nullable<System.DateTime> DateOfBirth { get; set; }
-        [DisplayName("信用評等")]
-        [Range(0, 9, ErrorMessage = "{0},信用評等必須介於0-9")]
         public Nullable<double> CreditRating { get; set; }
-        [DisplayName("功能")]
         public string XCode { get; set; }
         public Nullable<int> OccupationId { get; set; }
         public string TelephoneNumber { get; set; }
@@ -59,7 +37,7 @@ namespace MVC5Course.Models
         public Nullable<double> Longitude { get; set; }
         public Nullable<double> Latitude { get; set; }
         public string Notes { get; set; }
-
+    
         public virtual Occupation Occupation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

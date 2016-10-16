@@ -31,6 +31,7 @@ namespace MVC5Course.Controllers
             if (!string.IsNullOrEmpty(search))
             {
                 client = client.Where(x => x.FirstName.Contains(search));
+                //client = client.Where(x => x.FirstName == search);
             }
 
 
