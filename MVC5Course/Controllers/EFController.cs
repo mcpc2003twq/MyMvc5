@@ -1,4 +1,5 @@
 ﻿using MVC5Course.Models;
+using MVC5Course.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -16,7 +17,7 @@ namespace MVC5Course.Controllers
         public ActionResult Index()
         {
 
-            var data = db.Product.Take(20);
+            var data = db.Product.Where(p => p.ProductName.Contains("AAA"));
 
             return View(data);
         }
@@ -47,7 +48,7 @@ namespace MVC5Course.Controllers
 
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
@@ -85,19 +86,44 @@ namespace MVC5Course.Controllers
 
         public ActionResult Add20percent()
         {
-            var data = db.Product.Where(p => p.ProductName.Contains("White"));
+            string str = "%AAA%";
+            db.Database.ExecuteSqlCommand("Update dbo.product set price=price*1.2 where productName like @p0", str);
+            //var data = db.Product.Where(p => p.ProductName.Contains("AAA"));
 
-            foreach (var item in data)
-            {
-                if (item.Price.HasValue)
-                {
-                    item.Price = item.Price * 1.2m;
-                }
-            }
+            //foreach (var item in data)
+            //{
+            //    if (item.Price.HasValue)
+            //    {
+            //        item.Price = item.Price * 1.2m;
+            //    }
+            //}
 
-            db.SaveChanges();
+            //db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index");
+        }
+        /// <summary>
+        /// 讀取view呈現資料
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ClientContribution()
+        {
+
+            var data = db.vw_ClientContribution.Take(20);
+
+            return View(data);
+        }
+
+        public ActionResult ClientContribution2(string id)
+        {
+            //string keyword = "%Mary%";
+            var data = db.Database.SqlQuery<ClientContributionViewModel>("SELECT " +
+             "c.ClientId,c.FirstName,c.LastName,(SELECT SUM(o.OrderTotal) FROM[dbo].[Order] o " +
+             "WHERE o.ClientId = c.ClientId) as OrderTotal FROM [dbo].[Client] as c " +
+             "where c.FirstName like @p0", id);
+
+
+            return View(data);
         }
     }
 }
