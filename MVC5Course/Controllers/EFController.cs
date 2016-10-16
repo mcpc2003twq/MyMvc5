@@ -113,7 +113,11 @@ namespace MVC5Course.Controllers
 
             return View(data);
         }
-
+        /// <summary>
+        /// 使用inlineSQL取得資料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult ClientContribution2(string id)
         {
             //string keyword = "%Mary%";
@@ -122,6 +126,18 @@ namespace MVC5Course.Controllers
              "WHERE o.ClientId = c.ClientId) as OrderTotal FROM [dbo].[Client] as c " +
              "where c.FirstName like @p0", id);
 
+
+            return View(data);
+        }
+
+        /// <summary>
+        ///使用sp取得資料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult ClientContribution3(string id)
+        {
+            var data = db.usp_GetClientContribution(id);
 
             return View(data);
         }
