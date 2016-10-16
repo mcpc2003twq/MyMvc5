@@ -58,30 +58,30 @@ namespace MVC5Course.Controllers
         }
 
 
-        public ActionResult Update(int id)
-        {
-            var data = db.Product.Find(id);
+        //public ActionResult Update(int id)
+        //{
+        //    var data = db.Product.Find(id);
 
-            data.ProductName = data.ProductName + "!";
+        //    data.ProductName = data.ProductName + "!";
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var entityErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var vErrors in entityErrors.ValidationErrors)
-                    {
-                        throw new DbEntityValidationException(vErrors.PropertyName + "發生錯誤:" + vErrors.ErrorMessage);
-                    }
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbEntityValidationException ex)
+        //    {
+        //        foreach (var entityErrors in ex.EntityValidationErrors)
+        //        {
+        //            foreach (var vErrors in entityErrors.ValidationErrors)
+        //            {
+        //                throw new DbEntityValidationException(vErrors.PropertyName + "發生錯誤:" + vErrors.ErrorMessage);
+        //            }
+        //        }
+        //    }
 
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
         public ActionResult Add20percent()
         {
