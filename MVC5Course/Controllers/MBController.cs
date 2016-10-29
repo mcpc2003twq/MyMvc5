@@ -9,6 +9,7 @@ namespace MVC5Course.Controllers
 {
     public class MBController : BaseController
     {
+        [test]
         // GET: MB
         public ActionResult Index()
         {
@@ -90,4 +91,5 @@ namespace MVC5Course.Controllers
 
         }
     }
+
 }

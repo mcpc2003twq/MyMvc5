@@ -11,10 +11,6 @@ namespace MVC5Course.Controllers
     {
         protected FabricsEntities db = new FabricsEntities();
         // GET: Base
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         /// <summary>
         ///  找不到路由就導回index頁
