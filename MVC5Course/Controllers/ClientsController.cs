@@ -8,12 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
 using MVC5Course.Models.ViewModels;
+using MVC5Course.Controllers;
 
 namespace MVC5Course.Controllers
 {
-    public class ClientsController : Controller
+    public class ClientsController : BaseController
     {
-        private FabricsEntities db = new FabricsEntities();
+        //private FabricsEntities db = new FabricsEntities();
 
         // GET: Clients
         //public ActionResult Index()
