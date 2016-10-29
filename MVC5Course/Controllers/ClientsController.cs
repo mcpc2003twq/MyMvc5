@@ -110,14 +110,22 @@ namespace MVC5Course.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientId,FirstName,MiddleName,LastName,Gender,DateOfBirth,CreditRating,XCode,OccupationId,TelephoneNumber,Street1,Street2,City,ZipCode,Longitude,Latitude,Notes")] Client client)
+        public ActionResult Edit(int id,FormCollection from)
         {
-            if (ModelState.IsValid)
+            var client = db.Client.Find(id);
+            //檢核modelbinding資料
+            if (TryUpdateModel(client))
             {
-                db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //if (ModelState.IsValid)
+            //{
+
+                //db.Entry(client).State = EntityState.Modified;
+                //db.SaveChanges();
+               
+            //}
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", client.OccupationId);
             return View(client);
         }
