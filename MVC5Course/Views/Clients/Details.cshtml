@@ -141,6 +141,15 @@
 
     </dl>
 </div>
+
+<h3>html.Action</h3>
+
+@Html.Action("Index", "Orders", new { clientId = Model.ClientId })
+
+<h3>html.Partial</h3>
+
+@Html.Partial("../Orders/Index",Model.Order.ToList())
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ClientId }) |
     @Html.ActionLink("Back to List", "Index")

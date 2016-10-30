@@ -73,8 +73,8 @@ namespace MVC5Course.Controllers
               * items[0].ProductId
              * items[1].ProductId
               */
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 foreach (var item in items)
                 {
                     var product = db.Product.Find(item.ProductId);
@@ -87,7 +87,7 @@ namespace MVC5Course.Controllers
                 db.SaveChanges();
 
                 return RedirectToAction("ProductList");
-            //}
+            }
 
             return View();
 
