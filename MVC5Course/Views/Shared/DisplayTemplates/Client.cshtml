@@ -1,0 +1,50 @@
+﻿@model MVC5Course.Models.Client
+
+<dt>
+    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+</dt>
+
+<dd>
+    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+</dd>
+
+<dt>
+    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+</dt>
+
+<dd>
+    @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
+</dd>
+
+<dt>
+    @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+</dt>
+
+<dd>
+    @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+</dd>
+
+<dt>
+    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+</dt>
+
+<dd>
+    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+</dd>
+
+<dt>
+    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+</dt>
+
+<dd>
+    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+</dd>
+
+<dt>
+    @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+</dt>
+
+<dd>
+    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+</dd>
+

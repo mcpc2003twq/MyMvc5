@@ -11,7 +11,7 @@
     <h4>Client</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
@@ -137,8 +137,8 @@
 
         <dd>
             @Html.DisplayFor(model => model.Occupation.OccupationName)
-        </dd>
-
+        </dd>*@
+        @Html.DisplayForModel()
     </dl>
 </div>
 
