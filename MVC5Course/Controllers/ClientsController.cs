@@ -26,7 +26,7 @@ namespace MVC5Course.Controllers
         //    return View(client.Take(10).ToList());
         //}
 
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? CreditRating, string Gender)
         {
             var client = db.Client.Include(c => c.Occupation);
             if (!string.IsNullOrEmpty(search))
@@ -35,8 +35,14 @@ namespace MVC5Course.Controllers
                 //client = client.Where(x => x.FirstName == search);
             }
 
+            client = client.OrderByDescending(p => p.ClientId).Take(10);
 
-            return View(client.Take(10).ToList());
+            var option = db.Client.Select(p => p.CreditRating).Distinct().OrderBy(p => p).ToList();
+
+            ViewBag.CreditRating = new SelectList(option);
+            ViewBag.Gender = new SelectList(new string[] { "M", "F" });
+
+            return View(client);
         }
 
         public ActionResult Login()
@@ -110,7 +116,7 @@ namespace MVC5Course.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id,FormCollection from)
+        public ActionResult Edit(int id, FormCollection from)
         {
             var client = db.Client.Find(id);
             //檢核modelbinding資料
@@ -122,9 +128,9 @@ namespace MVC5Course.Controllers
             //if (ModelState.IsValid)
             //{
 
-                //db.Entry(client).State = EntityState.Modified;
-                //db.SaveChanges();
-               
+            //db.Entry(client).State = EntityState.Modified;
+            //db.SaveChanges();
+
             //}
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", client.OccupationId);
             return View(client);

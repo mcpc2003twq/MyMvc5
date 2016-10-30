@@ -11,7 +11,9 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <form action="">
-    <input type="search" name="search" value="" />
+    @Html.TextBox("search")
+    @Html.DropDownList("CreditRating", "--請選擇評價--")
+    @Html.DropDownList("Gender", "--請選擇性別--")
     <input type="submit" value="搜尋" />
 </form>
 <table class="table">
@@ -37,11 +39,11 @@
         <th>
             @Html.DisplayNameFor(model => model.XCode)
         </th>
-        
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
@@ -67,7 +69,7 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
         </td>
     </tr>
-   
+
 }
 
 </table>
