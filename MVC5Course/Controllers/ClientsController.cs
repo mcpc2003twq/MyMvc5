@@ -12,6 +12,7 @@ using MVC5Course.Controllers;
 
 namespace MVC5Course.Controllers
 {
+    [Authorize]
     public class ClientsController : BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
