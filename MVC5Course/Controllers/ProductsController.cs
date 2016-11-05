@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
 using MVC5Course.Controllers;
+using PagedList.Mvc;
 
 namespace MVC5Course.Controllers
 {
@@ -22,7 +23,10 @@ namespace MVC5Course.Controllers
         {
             // return View(db.Product.OrderByDescending(p => p.ProductId).Take(10).ToList());
             //var data = repo.All().OrderByDescending(p => p.ProductId).Take(10).ToList();
-            var data = repo.Get所有資料_依據ProductId排序(10).ToList();
+            //var data = repo.Get所有資料_依據ProductId排序(10).ToList();
+            var data = repo.All().OrderBy(x => x.ProductId).AsQueryable();
+
+
 
             return View(data);
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Threading;
 
 namespace MVC5Course.Controllers
 {
@@ -42,6 +43,11 @@ namespace MVC5Course.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult GetTime()
+        {
+            return Content();
         }
     }
 }
