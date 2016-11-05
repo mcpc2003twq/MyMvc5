@@ -47,7 +47,7 @@ namespace MVC5Course.Controllers
 
         public ActionResult GetTime()
         {
-            return Content();
+            return Content(DateTime.Now.ToString());
         }
     }
 }

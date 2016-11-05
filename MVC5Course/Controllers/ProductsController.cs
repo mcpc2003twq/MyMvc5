@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
 using MVC5Course.Controllers;
-using PagedList.Mvc;
+using PagedList;
 
 namespace MVC5Course.Controllers
 {
@@ -19,7 +19,7 @@ namespace MVC5Course.Controllers
 
         // GET: Products
         [Route("products/list")]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             // return View(db.Product.OrderByDescending(p => p.ProductId).Take(10).ToList());
             //var data = repo.All().OrderByDescending(p => p.ProductId).Take(10).ToList();
@@ -28,7 +28,7 @@ namespace MVC5Course.Controllers
 
 
 
-            return View(data);
+            return View(data.ToPagedList(pageNumber: page, pageSize: 10));
         }
 
         // GET: Products/Details/5
